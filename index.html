@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aparchit - Advanced Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Aparchit</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" onclick="showSection('home')" class="nav-link active">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#" onclick="showSection('courses')" class="nav-link">
+                    <i class="fas fa-book-open"></i> Courses
+                </a>
+                <a href="#" onclick="showSection('gallery')" class="nav-link">
+                    <i class="fas fa-images"></i> Gallery
+                </a>
+                <a href="#" onclick="showSection('storage')" class="nav-link">
+                    <i class="fas fa-cloud"></i> Storage
+                </a>
+                <a href="#" onclick="showSection('upload')" class="nav-link">
+                    <i class="fas fa-upload"></i> Upload
+                </a>
+                <a href="#" onclick="showSection('profile')" class="nav-link">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+            </nav>
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <span class="close-mobile-menu" onclick="toggleMobileMenu()">&times;</span>
+        </div>
+        <nav class="mobile-nav">
+            <a href="#" onclick="showSection('home'); toggleMobileMenu()"><i class="fas fa-home"></i> Home</a>
+            <a href="#" onclick="showSection('courses'); toggleMobileMenu()"><i class="fas fa-book-open"></i> Courses</a>
+            <a href="#" onclick="showSection('gallery'); toggleMobileMenu()"><i class="fas fa-images"></i> Gallery</a>
+            <a href="#" onclick="showSection('storage'); toggleMobileMenu()"><i class="fas fa-cloud"></i> Storage</a>
+            <a href="#" onclick="showSection('upload'); toggleMobileMenu()"><i class="fas fa-upload"></i> Upload</a>
+            <a href="#" onclick="showSection('profile'); toggleMobileMenu()"><i class="fas fa-user"></i> Profile</a>
+        </nav>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1 class="animate-fade-in">Welcome to Aparchit</h1>
+            <p class="animate-fade-in-delay">Your Complete Learning & Content Management Platform</p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-book-reader"></i>
+                    <h3>Learn Courses</h3>
+                    <p>Access premium courses</p>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload & Store</h3>
+                    <p>Manage your files</p>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-photo-video"></i>
+                    <h3>Gallery</h3>
+                    <p>Organize media content</p>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-download"></i>
+                    <h3>Download</h3>
+                    <p>Access anytime</p>
+                </div>
+            </div>
+            <button class="cta-btn" onclick="showSection('courses')">Explore Courses</button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3 id="userCount">10,000+</h3>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-book"></i>
+                    <h3 id="courseCount">50+</h3>
+                    <p>Courses Available</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3 id="fileCount">5,000+</h3>
+                    <p>Files Stored</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <h3>4.8/5</h3>
+                    <p>User Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses-section" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Available Courses</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" onclick="filterCourses('all')">All Courses</button>
+                    <button class="filter-tab" onclick="filterCourses('programming')">Programming</button>
+                    <button class="filter-tab" onclick="filterCourses('design')">Design</button>
+                    <button class="filter-tab" onclick="filterCourses('business')">Business</button>
+                    <button class="filter-tab" onclick="filterCourses('language')">Languages</button>
+                </div>
+            </div>
+            <div id="coursesGrid" class="courses-grid"></div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Media Gallery</h2>
+                <div class="gallery-filters">
+                    <button class="filter-tab active" onclick="filterGallery('all')">All</button>
+                    <button class="filter-tab" onclick="filterGallery('images')">Images</button>
+                    <button class="filter-tab" onclick="filterGallery('videos')">Videos</button>
+                    <button class="filter-tab" onclick="filterGallery('documents')">Documents</button>
+                </div>
+            </div>
+            <div id="galleryGrid" class="gallery-grid"></div>
+        </div>
+    </section>
+
+    <!-- Storage Section -->
+    <section id="storage" class="storage-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">My Storage</h2>
+            
+            <!-- Storage Stats -->
+            <div class="storage-stats">
+                <div class="storage-card">
+                    <div class="storage-icon">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <div class="storage-info">
+                        <h3>Total Storage</h3>
+                        <p class="storage-size">100 GB</p>
+                    </div>
+                </div>
+                <div class="storage-card">
+                    <div class="storage-icon used">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="storage-info">
+                        <h3>Used Storage</h3>
+                        <p class="storage-size" id="usedStorage">0 GB</p>
+                    </div>
+                </div>
+                <div class="storage-card">
+                    <div class="storage-icon available">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="storage-info">
+                        <h3>Available</h3>
+                        <p class="storage-size" id="availableStorage">100 GB</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storage Progress -->
+            <div class="storage-progress-container">
+                <div class="storage-progress-bar">
+                    <div id="storageProgressFill" class="storage-progress-fill"></div>
+                </div>
+                <p class="storage-percentage" id="storagePercentage">0% Used</p>
+            </div>
+
+            <!-- Files List -->
+            <div class="files-section">
+                <div class="files-header">
+                    <h3>My Files</h3>
+                    <button class="btn-primary" onclick="showSection('upload')">
+                        <i class="fas fa-plus"></i> Upload New
+                    </button>
+                </div>
+                <div id="filesList" class="files-list"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Upload Files</h2>
+            
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop Files Here</h3>
+                    <p>or click to browse</p>
+                    <input type="file" id="fileInput" multiple hidden>
+                    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                        Choose Files
+                    </button>
+                </div>
+
+                <div id="uploadedFiles" class="uploaded-files"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="profile-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">User Profile</h2>
+            
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3 id="userName">Guest User</h3>
+                    <p class="user-email">rm2778643@gmail.com</p>
+                    <p class="user-phone"><i class="fas fa-phone"></i> +91 7004398297</p>
+                    
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <h4 id="enrolledCourses">0</h4>
+                            <p>Enrolled Courses</p>
+                        </div>
+                        <div class="profile-stat">
+                            <h4 id="uploadedFiles">0</h4>
+                            <p>Uploaded Files</p>
+                        </div>
+                        <div class="profile-stat">
+                            <h4 id="completedCourses">0</h4>
+                            <p>Completed</p>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" onclick="editProfile()">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                </div>
+
+                <div class="activity-card">
+                    <h3>Recent Activity</h3>
+                    <div id="activityList" class="activity-list"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Detail Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="modalCourseTitle">Course Details</h2>
+                <span class="close" onclick="closeCourseModal()">&times;</span>
+            </div>
+            <div id="modalCourseContent" class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Image Viewer Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content image-viewer">
+            <span class="close" onclick="closeImageModal()">&times;</span>
+            <img id="modalImage" src="" alt="Full size image">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-graduation-cap"></i> Aparchit</h3>
+                    <p>Your complete learning and content management platform. Learn, upload, store, and manage all your educational content in one place.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" onclick="showSection('courses')">Browse Courses</a></li>
+                        <li><a href="#" onclick="showSection('gallery')">Gallery</a></li>
+                        <li><a href="#" onclick="showSection('storage')">My Storage</a></li>
+                        <li><a href="#" onclick="showSection('upload')">Upload Files</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> rm2778643@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 7004398297</li>
+                        <li><i class="fas fa-map-marker-alt"></i> India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Aparchit Learning Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
